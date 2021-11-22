@@ -11,8 +11,7 @@ with open(f'{filename}.txt', 'r') as f:
     A = np.array([[float(j) for j in i.split()] for i in s[1:N + 1]], dtype=np.float64)
     b = np.array([[float(i) for i in s[-1].split()]], dtype=np.float64).transpose()
 
-    A_invert = linalg.inv(A)
-    x = (A_invert @ b).transpose()
+    x = linalg.solve(A, b).transpose()
     absc = np.arange(1, x[0].size + 1)
 
     fig, axs = plt.subplots(1, 1)
